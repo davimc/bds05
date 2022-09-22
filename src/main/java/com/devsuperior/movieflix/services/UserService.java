@@ -1,7 +1,9 @@
 package com.devsuperior.movieflix.services;
 
+import com.devsuperior.movieflix.dto.UserDTO;
 import com.devsuperior.movieflix.entities.User;
 import com.devsuperior.movieflix.repositories.UserRepository;
+import com.devsuperior.movieflix.services.exceptions.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +22,6 @@ public class UserService implements UserDetailsService {
     private static Logger logger = LoggerFactory.getLogger(UserService.class);
     @Autowired
     private UserRepository repository;
-    /*@Autowired
-    private AuthService authService;*/
-
-    /*@Transactional(readOnly = true)
-    public UserDTO findById(Long id) {
-        authService.validateSelfOrAdmin(id);
-
-        Optional<User> obj = repository.findById(id);
-
-        return new UserDTO(obj.orElseThrow(() -> new ObjectNotFoundException(id, User.class)));
-    }*/
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
